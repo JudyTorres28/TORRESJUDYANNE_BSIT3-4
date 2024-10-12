@@ -1,0 +1,25 @@
+{% extends 'pages/index.html' %}
+
+{% block title %}Add/Edit Doctor{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Add New Doctor</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_name">Name:</label>
+                {{ form.name }}
+            </div>
+            <div class="form-group">
+                <label for="id_specialization">Specialization:</label>
+                {{ form.specialization }}
+            </div>
+            <div class="form-group">
+                <label for="id_contact_info">Contact Info:</label>
+                {{ form.contact_info }}
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+{% endblock %}

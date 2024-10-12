@@ -1,0 +1,33 @@
+{% extends 'pages/index.html' %}
+
+{% block title %}Doctor List{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Doctor List</h1>
+                <ul class="list-group">
+                    {% for doctor in doctors %}
+                    <li class="list-group-item">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="{% url 'doctor_detail' doctor.pk %}">{{ doctor.name }}</a>
+                            <div>
+                                <a href="{% url 'doctor_update' doctor.pk %}" class="btn btn-sm btn-primary">Edit</a>
+                                <a href="{% url 'doctor_delete' doctor.pk %}" class="btn btn-sm btn-danger">Delete</a>
+                            </div>
+                        </div>
+                    </li>
+                    {% empty %}
+                    <li class="list-group-item">No doctors found.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                <a href="{% url 'doctor_create' %}" class="btn btn-primary">Add New Doctor</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
